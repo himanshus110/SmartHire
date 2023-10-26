@@ -1,0 +1,154 @@
+body {
+    font-family: "Montserrat";
+    text-align: center;
+  }
+  
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat-bold";
+  }
+  
+  p {
+    color: #8f8f8f;
+  }
+  
+  /* Headings */
+  
+  .big-heading {
+    font-family: "Montserrat-black";
+    font-size: 3.5rem;
+    line-height: 1.5;
+  }
+  
+  .section-heading {
+    font-size: 3rem;
+    line-height: 1.5rem;
+  }
+  
+  .container-fluid {
+    padding: 7% 12%;
+  }
+  
+    /* sections */
+  .colored-section{
+    background-image: linear-gradient(to left, rgb(173, 175, 198) , #1f3c5b);
+    color:#fff;
+  }
+  
+  .white-section{
+  background-color: #fff;
+  }
+  
+  /* Navigation bar */
+  .navbar {
+    padding: 0 0 4.5rem;
+  }
+  
+  .navbar-brand {
+    font-family: "Ubuntu";
+    font-size: 2.5rem;
+    font-weight: "bold";
+  }
+  
+  .navbar-item {
+    padding: 0 18px;
+    font-family: "Montserrat-light";
+  }
+  
+  .nav-link {
+    font-size: 1.2rem;
+  }
+  
+  /* Download Buttons */
+  .download-button {
+    margin: 5% 3% 5% 0;
+  }
+  
+  /* title section */
+  #title {
+    color: white;
+    text-align: left;
+  }
+  
+  #title .container-fluid {
+    padding: 3% 12% 7%;
+  }
+  
+  .title-img {
+    width: 60%;
+    position: absolute;
+    right: 30%;
+  }
+  
+  /* features section  */
+  #features {
+    background-color: #fff;
+    position: relative;
+  }
+  
+  .feature-box {
+    padding: 5%;
+  }
+  
+  .feature-title {
+    font-size: 1.5rem;
+  }
+  
+  .icon {
+    margin-bottom: 1rem;
+  }
+  
+  .icon:hover {
+    color: #1f3c5b;
+  }
+
+  
+  /* cta section */
+  #cta {
+    color: #fff;
+  }
+  
+  /* Footer Section */
+  .social-icon {
+    margin: 20px 20px;
+  }
+
+  .rating {
+    display: inline-block;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+  }
+  
+  .rating label:before {
+    content: '\2605';
+    font-size: 30px;
+  }
+  
+  .rating input:checked ~ label,
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: #6f00ff;
+    transition: color 0.3s;
+  }
+  
+  
+  @media (max-width: 1028px) {
+    #title {
+      text-align: center;
+    }
+  
+    .title-img {
+      position: static;
+      transform: rotate(0);
+    }
+  }
+  

@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title id="title">Resume Upload Website</title>
+ <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../static/index.css">
+<link rel="stylesheet" href="{% static 'index.css' %}">
+
+</head>
+<body>
+
+  <section class="colored-section" id="title">
+
+    <div class="header">
+      <!-- Nav Bar (from BootStrap documentation) -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        
+        <a><img src="{% static 'images\logo.png' %}" style="width: 130px; margin-right: 5px;"></a>
+  
+        <a class="navbar-brand" href="/">SmartHire</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-auto">
+            <!-- ml auto creates margin here between the brand and the rest of the nav bar -->
+            <li class="navbar-item">
+                <a class="nav-link" href="/"> Home</a>
+              </li>
+            <li class="navbar-item">
+              <a class="nav-link" href="upload/"> Upload Resume</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <div class="container">
+    
+    <div class="row" >
+      <div class="col">
+        <div class="content">
+            <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+            <h3>Job Description</h3>
+            <textarea class="description" placeholder="Enter Job Description" name="description" style="width: 100%;"></textarea>
+            <div>
+              <br>
+              
+              <h3>Upload Resume</h3>
+              <input type="file" id="resume" name="resume" multiple style="width: 85%;">
+            <button class="cssbuttons-io-button"  id="uploadButton">
+              <svg viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path></svg>
+               <span>Upload</span>
+             </button></div>
+             <div id="animationContainer" class="hidden">
+              <!-- animation HTML  -->
+              <div class="loader"></div>
+              <h1>Please wait...</h1>
+          </div>
+            <div id="uploaded-resumes"></div>
+            </form>
+        </div>
+      </div>
+      <div class="col-md-12">
+          <div id="resume-preview" class="list-group">
+            <!-- Resumes will be displayed here -->
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('resume');
+    const resumePreview = document.getElementById('resume-preview');
+  
+    fileInput.addEventListener('change', (event) => {
+      resumePreview.innerHTML = ''; 
+  
+      const files = event.target.files;
+      for (const file of files) {
+        const reader = new FileReader();
+  
+        reader.onload = (e) => {
+          const resumeDiv = document.createElement('div');
+          resumeDiv.classList.add('uploaded-resume');
+  
+          const resumeTitle = document.createElement('h5');
+          resumeTitle.textContent = file.name;
+  
+          const resumeImg = document.createElement('img');
+          resumeImg.src = e.target.result;
+          resumeImg.alt = 'Resume Preview';
+          resumeImg.classList.add('resume-img');
+          
+          const iframe = document.createElement('iframe');
+          iframe.src = URL.createObjectURL(file);
+  
+          resumeDiv.appendChild(resumeTitle);
+          if (file && (file.type === 'application/pdf')){
+           resumeDiv.appendChild(iframe);
+          }
+          else{
+            resumeDiv.appendChild(resumeImg);
+          }
+          resumePreview.appendChild(resumeDiv);
+        };
+  
+        reader.readAsDataURL(file);
+      }
+    });
+
+    $(document).ready(function() {
+    $('#uploadButton').click(function() {
+        var button = $(this);
+        var animationContainer = $('#animationContainer');
+
+        // Hide the button and show the animation container
+        button.hide();
+        animationContainer.show();
+
+        //request to the backend 
+        fetch('https://www.google.com', {
+            method: 'GET', // Change this to the appropriate method
+            body: JSON.stringify({ /* Your request data */ }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response data
+            console.log(data);
+
+            // Hide the animation container and show the button again
+            animationContainer.hide();
+            button.show();
+        })
+        .catch(error => {
+            console.error(error);
+
+            // Hide the animation container and show the button again
+            animationContainer.hide();
+            button.show();
+        });
+    });
+});
+
+</script>
+
+  
+</body>
+</html>

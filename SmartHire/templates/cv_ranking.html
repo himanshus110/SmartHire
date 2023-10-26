@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Upload Website</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../static/cv_ranking.css">
+<link rel="stylesheet" href="{% static 'cv_ranking.css' %}">
+
+  <!-- fontawesome -->
+<script src="https://kit.fontawesome.com/b70f3ea85a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <section class="colored-section" id="title">
+
+    <div class="header">
+      <!-- Nav Bar (from BootStrap documentation) -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        
+        <a><img src="{% static 'images\logo.png' %}" style="width: 130px; margin-right: 5px;"></a>
+  
+        <a class="navbar-brand" href="/">SmartHire</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-auto">
+            <!-- ml auto creates margin here between the brand and the rest of the nav bar -->
+            <li class="navbar-item">
+                <a class="nav-link" href="/"> Home</a>
+              </li>
+            <li class="navbar-item">
+              <a class="nav-link" href="upload/"> Upload Resume</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="list-group candidate-details">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start heading">
+                Shortlisted Candidates
+            </a>
+
+            {% for candidate in candidate_details %}
+            <div class="header candidate-card"> 
+              <h1>{{candidate.serial_no}}</h1> 
+              <div class="content">
+                <span class="name">{{candidate.name}}</span><br>
+                
+                <p class="description"> Professional Experience : {{candidate.work}}</p> 
+                <p class="description"> Contact No. : {{candidate.mobile_no}}</p> 
+                <a href="{% url 'feedback' candidate.id  %}" style="color: aliceblue;"><p class="description">Check feedback<i class="fa-solid fa-file-import"></i></p></a>
+              </div> 
+              <div class="actions">
+                <button type="button" class="email"> SHORTLISTED </button> 
+                <button type="button" class="open-resume";>Mail Sent for Interview</button>
+          
+              </div> 
+              </div> 
+              {% endfor %} 
+         </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

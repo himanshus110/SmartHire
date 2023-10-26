@@ -1,0 +1,139 @@
+body {
+  font-family: "Montserrat";
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right, rgb(173, 175, 198) , #1f3c5b);
+  }
+  
+  .container {
+    width: 100%;
+    padding: 35px;
+  }
+  
+  .header {
+    background-color: #1f3c5b;
+    color: #fff;
+    padding: 35px;
+    height: auto;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  
+  input {
+    /* width: 100%; */
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    background-color: #092c54;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  #uploaded-resumes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #uploaded-resumes li {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .list-group .heading{
+    color: azure;
+    background-color: #092c54;
+  }
+
+  .uploaded-resume {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .resume-img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-left: 10px;
+  }
+  
+  .cssbuttons-io-button {
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 0.8em 1.5em 0.8em 1.2em;
+    color: white;
+    background: #1f3c5b;
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+    margin-top: 10px;
+  }
+  
+  .cssbuttons-io-button svg {
+    margin-right: 8px;
+  }
+  
+  .cssbuttons-io-button:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em rgb(110, 59, 197);
+  }
+  
+  .cssbuttons-io-button:active {
+    box-shadow: 0 0.3em 1em -0.5em rgb(246, 245, 248);
+  }
+
+  .description{
+    width: 70%;
+    height: 130px;
+    border-radius:8px;
+    padding: 10px 10px;
+    margin-bottom: 4px;
+  }
+
+  /* loader-style */
+  .loader {
+    display: block;
+    --height-of-loader: 4px;
+    --loader-color: #0071e2;
+    width: 130px;
+    height: var(--height-of-loader);
+    border-radius: 30px;
+    background-color: rgba(0,0,0,0.2);
+    position: relative;
+  }
+  
+  .loader::before {
+    content: "";
+    position: absolute;
+    background: var(--loader-color);
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 30px;
+    animation: moving 1s ease-in-out infinite;
+    ;
+  }
+  
+  @keyframes moving {
+    50% {
+      width: 100%;
+    }
+  
+    100% {
+      width: 0;
+      right: 0;
+      left: unset;
+    }
+  }
